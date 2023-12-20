@@ -38,6 +38,35 @@ int main()
         printf("Decrypted text is:\n");
         printf("%s\n", decryptedtext);
     }
+    std::cout<<"=================================="<<std::endl;
+
+    unsigned char plaintext1[] = "I am pro code.";
+    unsigned char ciphertext1[600];
+    unsigned char decryptedtext1[600];
+    decryptedtext_len = 0, ciphertext_len = 0;
+
+
+    ciphertext_len = obj.do_encrypt(plaintext1,sizeof(plaintext1),ciphertext1);
+
+    printf("Ciphertext is:\n");
+    BIO_dump_fp(stdout, ciphertext1, ciphertext_len);
+
+    decryptedtext_len = obj.do_decrypt(ciphertext1,ciphertext_len,decryptedtext1);
+    
+    if(decryptedtext_len < 0)
+    {
+        /* Verify error */
+        printf("Decrypted text failed to verify\n");
+    }
+    else
+    {
+        /* Add a NULL terminator. We are expecting printable text */
+        decryptedtext1[decryptedtext_len] = '\0';
+
+        /* Show the decrypted text */
+        printf("Decrypted text is:\n");
+        printf("%s\n", decryptedtext1);
+    }
 
     return 0;
 }

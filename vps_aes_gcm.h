@@ -11,9 +11,6 @@ class vps_aes
         //var & point
         EVP_CIPHER_CTX *vps_ctx = NULL;
         EVP_CIPHER_CTX *vps_ctx_dec = NULL;
-        unsigned char cip_key[32]{};
-        unsigned char cip_vi[16]{};
-
         //function
         
         void handle_error(void);
